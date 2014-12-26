@@ -6,6 +6,7 @@ module ProjectTracker
       describe Memory do
         let(:client)     { Client.new("Some client") }
         let(:project)    { Project.new("Project name", client) }
+        let(:worker)     { Worker.new("Dude working") }
         let(:repository) { Memory.new }
 
         describe "#save" do
@@ -29,7 +30,7 @@ module ProjectTracker
         describe "when adding task to a project" do
           before do
             repository.save(project)
-            repository.add_task(project, Task.new(task_date, "12:00", "13:00", "a task"))
+            repository.add_task(project, Task.new(worker, task_date, "12:00", "13:00", "a task"))
           end
 
           it "#tasks retrieves the task " do
@@ -42,7 +43,7 @@ module ProjectTracker
           end
 
           it "#remove_task removes the task" do
-            repository.remove_task(project, Task.new(task_date, "12:00", "13:00", "a task"))
+            repository.remove_task(project, Task.new(worker, task_date, "12:00", "13:00", "a task"))
             expect(repository.tasks(project).count).to eq(0)
           end
         end

@@ -6,13 +6,10 @@ module ProjectTracker
       Repository.register(:projects, Repository::Projects::Memory.new)
     end
 
-    let(:client)           { Client.new("A small agency") }
-    let(:task_date)        { Date.today }
-    let(:task_description) { "a couple of changes" }
-    let(:start_time)       { "12:00" }
-    let(:finish_time)      { "13:00" }
-    let(:task)             { Task.new(task_date, start_time, finish_time, task_description) }
-    let(:project)          { Project.new("Test project", client) }
+    let(:client)  { Client.new("A small agency") }
+    let(:project) { Project.new("Test project", client) }
+    let(:worker)  { Worker.new("John Doe") }
+    let(:task)    { Task.new(worker, Date.today, "12:00", "13:00", "a task") }
 
     describe "#new" do
       it "instantiates object with basic attributes" do
@@ -24,6 +21,12 @@ module ProjectTracker
     end
 
     describe "#add_task" do
+      let(:task_date)        { Date.today }
+      let(:task_description) { "a couple of changes" }
+      let(:start_time)       { "12:00" }
+      let(:finish_time)      { "13:00" }
+      let(:task)             { Task.new(worker, task_date, start_time, finish_time, task_description) }
+
       it "raises error if project is not persisted" do
         expect { project.add_task(task) }.
           to raise_error(RuntimeError, "instance not persisted")
@@ -36,6 +39,7 @@ module ProjectTracker
         expect(project.tasks.count).to eq(1)
 
         retrieved_task = project.tasks.first
+        expect(retrieved_task.worker).to eq(worker)
         expect(retrieved_task.date).to eq(task_date)
         expect(retrieved_task.start_time).to eq(start_time)
         expect(retrieved_task.finish_time).to eq(finish_time)
