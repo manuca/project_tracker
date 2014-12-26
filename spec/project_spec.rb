@@ -23,19 +23,6 @@ module ProjectTracker
       end
     end
 
-    describe "equality" do
-      let(:p1) { Project.new("p1", client) }
-      let(:p2) { Project.new("p2", client) }
-
-      it { expect(p1).to eq(p1) }
-      it { expect(p1).not_to eq(p2) }
-
-      it "projects with same ID are considered the same entity" do
-        p1.id = p2.id = 1
-        expect(p1).to eq(p2)
-      end
-    end
-
     describe "#add_task" do
       it "raises error if project is not persisted" do
         expect { project.add_task(task) }.
