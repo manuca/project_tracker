@@ -6,6 +6,7 @@ require 'project_tracker/domain/client'
 require 'project_tracker/domain/project'
 require 'project_tracker/domain/task'
 require 'project_tracker/domain/worker'
+require 'project_tracker/domain/tennant'
 
 require 'project_tracker/repository'
 require 'project_tracker/repository/projects/memory'

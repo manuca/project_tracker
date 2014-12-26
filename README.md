@@ -1,3 +1,3 @@
 # ProjectTracker
 
-Time tracking for different projects and clients.
+Time tracking for multiple projects, clients, workers and tennants.

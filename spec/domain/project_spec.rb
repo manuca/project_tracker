@@ -6,15 +6,17 @@ module ProjectTracker
       Repository.register(:projects, Repository::Projects::Memory.new)
     end
 
-    let(:client)  { Client.new("A small agency") }
-    let(:project) { Project.new("Test project", client) }
-    let(:worker)  { Worker.new("John Doe") }
+    let(:tennant) { Tennant.new("A tennant")                                 }
+    let(:client)  { Client.new(tennant, "A small agency")                    }
+    let(:project) { Project.new(tennant, "Test project", client)             }
+    let(:worker)  { Worker.new(tennant, "John Doe")                          }
     let(:task)    { Task.new(worker, Date.today, "12:00", "13:00", "a task") }
 
     describe "#new" do
       it "instantiates object with basic attributes" do
-        project = Project.new("Testing project", client)
+        project = Project.new(tennant, "Testing project", client)
 
+        expect(project.tennant).to eq(tennant)
         expect(project.name).to eq("Testing project")
         expect(project.client).to eq(client)
       end

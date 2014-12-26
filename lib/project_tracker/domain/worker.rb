@@ -1,7 +1,8 @@
 module ProjectTracker
   class Worker
-    def initialize(name)
-      @name = name
+    def initialize(tennant, name)
+      @tennant = tennant
+      @name    = name
     end
   end
 end

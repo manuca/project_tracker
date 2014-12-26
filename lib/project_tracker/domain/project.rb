@@ -1,10 +1,11 @@
 module ProjectTracker
   class Project < Entity
-    attr_reader :name, :client
+    attr_reader :name, :client, :tennant
 
-    def initialize(name, client)
-      @name   = name
-      @client = client
+    def initialize(tennant, name, client)
+      @tennant = tennant
+      @name    = name
+      @client  = client
     end
 
     def add_task(task)

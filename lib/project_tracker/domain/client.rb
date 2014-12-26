@@ -1,6 +1,6 @@
 module ProjectTracker
   class Client
-    def initialize(name)
+    def initialize(tennant, name)
     end
   end
 end

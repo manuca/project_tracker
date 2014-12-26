@@ -3,10 +3,12 @@ require 'spec_helper'
 module ProjectTracker
   module Repository
     module Projects
+      # This will be a common spec for all repository backends
       describe Memory do
-        let(:client)     { Client.new("Some client") }
-        let(:project)    { Project.new("Project name", client) }
-        let(:worker)     { Worker.new("Dude working") }
+        let(:tennant)    { Tennant.new("A tennant") }
+        let(:client)     { Client.new(tennant, "Some client") }
+        let(:project)    { Project.new(tennant, "Project name", client) }
+        let(:worker)     { Worker.new(tennant, "Dude working") }
         let(:repository) { Memory.new }
 
         describe "#save" do

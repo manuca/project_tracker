@@ -2,7 +2,8 @@ require 'spec_helper'
 
 module ProjectTracker
   describe Task do
-    let(:worker) { Worker.new("Dude working") }
+    let(:tennant) { Tennant.new("A Tennant") }
+    let(:worker)  { Worker.new(tennant, "Dude working") }
 
     it "instantiates with basic attributes" do
       date = Date.today
