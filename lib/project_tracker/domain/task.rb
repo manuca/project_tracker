@@ -12,8 +12,8 @@ module ProjectTracker
       @worker      = worker
       @date        = date
       @description = description
-      @start_time  = start
-      @finish_time = finish
+      @start_time  = s
+      @finish_time = f
     end
   end
 end

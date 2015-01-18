@@ -11,7 +11,7 @@ module ProjectTracker
       it { expect(e1).to eq(e1) }
       it { expect(e1).not_to eq(e2) }
 
-      it "projects with same ID are considered the same entity" do
+      it "entities same ID are considered the same entity" do
         e1.id = e2.id = 1
         expect(e1).to eq(e2)
       end

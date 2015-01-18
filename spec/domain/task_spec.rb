@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'time'
 
 module ProjectTracker
   describe Task do
@@ -15,8 +16,8 @@ module ProjectTracker
 
       expect(task.worker).to eq(worker)
       expect(task.date).to eq(date)
-      expect(task.start_time).to  eq(start_time)
-      expect(task.finish_time).to eq(finish_time)
+      expect(task.start_time).to  eq(Time.parse(start_time))
+      expect(task.finish_time).to eq(Time.parse(finish_time))
       expect(task.description).to eq(description)
     end
 
